@@ -31,3 +31,10 @@ joblib.dump(mlb, out_dir / "mlb.pkl")
 
 print("model saved")
 print(f"model performance: {clf.score(X_test_tfidf, y_test):.4f}")
+
+from sklearn.metrics import f1_score
+
+y_pred = clf.predict(X_test_tfidf)
+print("Micro F1:", f1_score(y_test, y_pred, average="micro"))
+print("Macro F1:", f1_score(y_test, y_pred, average="macro"))
+print("Weighted F1:", f1_score(y_test, y_pred, average="weighted"))
